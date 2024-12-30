@@ -20,6 +20,13 @@ INSTALLED_APPS += [
     'rest_framework_simplejwt',
     'accounts.apps.AccountsConfig',
     'blog.apps.BlogConfig',
+    'shop.apps.ShopConfig',
+
+
+    # app external
+
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
 
 ]
 
@@ -42,6 +49,7 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.FormParser',
         'rest_framework.parsers.MultiPartParser',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
 }
 
@@ -50,6 +58,13 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(hours=1),
 }
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Test Project API',
+    'DESCRIPTION': 'Test project idea',
+    'VERSION': '0.0.1',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
 
 AUTH_USER_MODEL = "accounts.User"
 
@@ -92,3 +107,12 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 SESSION_COOKIE_AGE = 3600
+
+
+
+
+
+
+
+MERCHANT = "c1032b6c-9870-4e46-9d00-508f071bf53d"
+SANDBOX = True
