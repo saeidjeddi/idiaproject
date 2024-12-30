@@ -26,7 +26,7 @@ INSTALLED_APPS += [
 
 MIDDLEWARE += [
 
-    # 'middlewares.url404.middleware.JsonResponse404Middleware',
+    'middlewares.url404.middleware.JsonResponse404Middleware',
 
 ]
 
@@ -68,13 +68,13 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'assets/',]
+STATICFILES_DIRS = [ 'assets/',]
 
 
 # Media File
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / '/media/'
+MEDIA_ROOT = 'media'
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
