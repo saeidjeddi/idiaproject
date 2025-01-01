@@ -6,6 +6,7 @@ class UserView(APIView):
 
     permission_classes = [IsAuthenticated]
 
+
     def get(self, request, format=None):
         content = {
             'username': request.user.username,  

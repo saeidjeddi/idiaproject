@@ -9,7 +9,8 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    
+
+
     username = models.CharField(max_length=255, unique=True, verbose_name='نام کاربری')
     phone = models.CharField(max_length=11, unique=True, verbose_name='تلفن')
     is_active = models.BooleanField(default=True, verbose_name='فعال ')
