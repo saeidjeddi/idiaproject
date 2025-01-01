@@ -27,6 +27,7 @@ INSTALLED_APPS += [
 
     'drf_spectacular',
     'drf_spectacular_sidecar',
+    'django_filters',
 
 ]
 
@@ -50,6 +51,11 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 1,
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
 
 }
 
@@ -114,5 +120,5 @@ SESSION_COOKIE_AGE = 3600
 
 
 
-MERCHANT = "c1032b6c-9870-4e46-9d00-508f071bf53d"
+MERCHANT = "XXXXXXXXXXXXXXXXXXX"
 SANDBOX = True
