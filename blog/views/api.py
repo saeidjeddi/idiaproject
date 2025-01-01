@@ -1,3 +1,4 @@
+from rest_framework.generics import ListAPIView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from blog.models import ArticleModel
@@ -9,18 +10,21 @@ from rest_framework.permissions import IsAuthenticated
 from permissions import admin
 
 
-class GetArticleApi(APIView):
-    def get(self, request):
-        articles = ArticleModel.objects.all()
-        paginator = PageNumberPagination()
-        paginated_articles = paginator.paginate_queryset(articles, request)
-        serializer = ArticleSerializer(paginated_articles, many=True)
-        return paginator.get_paginated_response(serializer.data)
+class GetArticleApi(ListAPIView):
+    queryset = ArticleModel.objects.all()
+    filterset_fields = ['title', 'author', 'created_at']
+    ordering_fields = ['title', 'author', 'created_at']
+    search_fields = ['title', 'author', 'created_at']
+    serializer_class = ArticleSerializer
+    pagination_class = PageNumberPagination
+
+
     
 
 
 class PostArticleApi(APIView):
     permission_classes = [admin.AdminPermission]
+
     def post(self, request, *args, **kwargs):
         serializer = ArticleSerializer(data=request.data)
         if serializer.is_valid():
